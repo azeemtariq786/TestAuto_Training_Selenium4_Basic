@@ -14,9 +14,11 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class Module7 {
 	
 	public static void main(String[] args) throws InterruptedException {
-		WebDriverManager.chromedriver().setup();		
-	
-		WebDriver driver = new ChromeDriver();
+		WebDriverManager.chromedriver().setup();
+		
+		ChromeOptions options =  openOnMonitor();
+			
+		WebDriver driver = new ChromeDriver(options);
 		
 		driver.get("https://www.sparkstone.co.nz/sampleapp/101/");
 		
@@ -192,6 +194,17 @@ public class Module7 {
 
 	}
 	
+	
+	
+	public static ChromeOptions openOnMonitor() {
+		ChromeOptions options = new ChromeOptions();
+		// Set the window position and size to place it on the extended display
+		options.addArguments("--window-position=1366,0"); // Change these values based on your extended display resolution
+		options.addArguments("--window-size=1920,1080");  // Change these values based on your extended display resolution
+
+		return options;
+
+	}
 
 
 }
